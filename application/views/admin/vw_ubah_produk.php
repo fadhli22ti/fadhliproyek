@@ -9,7 +9,7 @@
                     Form Ubah Data Produk
                 </div>
                 <div class="card-body">
-                    <form action="<?= base_url('Admin/edit') ?>" method="POST">
+                    <form action="<?= base_url('Admin/edit/' . $produk['id']); ?>" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?= $produk['id'] ?>" id="id" class="form-control">
                         <div class="form-group mb-2">
                             <label for="nama_produk">Nama</label>
@@ -31,7 +31,11 @@
                             <?= form_error('Harga', '<small class="text-danger pl-3">', '</small>') ?>
                         </div>
 
-
+                        <div class="mb-3">
+                            <label for="gambar" class="form-label">Gambar Produk</label>
+                            <input type="file" name="gambar" class="form-control" id="gambar" accept=".jpg, .jpeg">
+                        </div>
+                        
 
                         <a href="<?= base_url('Admin') ?>" class="btn btn-danger">Tutup</a>
                         <button type="submit" name="tambah" class="btn btn-primary float-right">Ubah Produk</button>

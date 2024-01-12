@@ -8,6 +8,7 @@ class Produk_model extends CI_Model
     public function __construct()
     {
         parent::__construct();
+
     }
     public function get()
     {
@@ -18,7 +19,7 @@ class Produk_model extends CI_Model
     public function getById($id)
     {
         $this->db->from($this->table);
-        ;
+        $this->db->where('id', $id);
         $query = $this->db->get();
         return $query->row_array();
     }

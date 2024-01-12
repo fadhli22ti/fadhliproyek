@@ -13,7 +13,7 @@ class Auth extends CI_Controller
     public function index()
     {
         if ($this->session->userdata('email')) {
-            redirect('user');
+            redirect('admin');
         }
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', [
             'valid_email' => 'Email Harus Valid',
@@ -32,32 +32,36 @@ class Auth extends CI_Controller
     }
 
     public function cek_login()
-    {
-        $email = $this->input->post('email');
-        $password = $this->input->post('password');
-        $admin = $this->db->get_where('admin', ['email' => $email])->row_array();
-        if ($admin) {
-            if (password_verify($password, $admin['password'])) {
-                $data = [
-                    'email' => $admin['email'],
-                    'role' => $admin['role'],
-                    'id' => $admin['id']
-                ];
-                $this->session->set_userdata($data);                
-                if ($admin['role'] == 'Admin') {
-                    redirect('Admin');
-                } else {
-                    redirect('User');
-                }
+{
+    $email = $this->input->post('email');
+    $password = $this->input->post('password');
+    $admin = $this->db->get_where('admin', ['email' => $email])->row_array();
+    
+    if ($admin) {
+        // Cek apakah password sesuai tanpa enkripsi
+        if ($password == $admin['password']) {
+            $data = [
+                'email' => $admin['email'],
+                'role' => $admin['role'],
+                'id' => $admin['id']
+            ];
+            $this->session->set_userdata($data);
+
+            if ($admin['role'] == 'Admin') {
+                redirect('Admin');
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
-                redirect('Auth');
+                redirect('Admin');
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email belum terdaftar!</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
             redirect('Auth');
         }
+    } else {
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email belum terdaftar!</div>');
+        redirect('Auth');
     }
+}
+
     public function logout()
     {
         $this->session->unset_userdata('email');

@@ -20,16 +20,22 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class user extends CI_Controller
 {
-    
+
   public function __construct()
   {
     parent::__construct();
+    $this->load->model('Produk_model');
+
   }
 
   public function index()
   {
     $data['judul'] = "Halaman Admin";
+    $data['produk'] = $this->Produk_model->get();
+    $this->load->view("layout/header", $data);
     $this->load->view("user/vw_user", $data);
+    $this->load->view("layout/footer", $data);
+
   }
 
 }

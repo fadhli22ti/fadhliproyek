@@ -10,7 +10,7 @@
                 </div>  
 
                 <div class="card-body">
-                    <form action="<?= base_url('Admin/tambah') ?>" method="POST" enctype="multipart/form-data">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="formGroupExampleInput" class="form-label">Nama Produk</label>
                             <input type="text" name="nama_produk" class="form-control"
@@ -23,8 +23,13 @@
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput" class="form-label">Harga Produk</label>
-                            <input type="text" name="harga" class="form-control"
+                            <input type="number" name="harga" class="form-control"
                                 value="<?= set_value('harga') ?>" id="harga" placeholder="Harga Produk">
+                        </div>
+                        <div class="mb-3">
+                            <label for="gambar" class="form-label">Gambar Produk</label>
+                            <input type="file" name="gambar" class="form-control"
+                            value="<?= set_value('gambar') ?>" id="gambar" accept=".jpg, .jpeg">
                         </div>
 
                         <a href="<?= base_url('Admin') ?>" class="btn btn-danger">Tutup</a>

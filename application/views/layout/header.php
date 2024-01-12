@@ -8,7 +8,7 @@
     <meta name="author" content="" />
     <title>Rumah Cookies</title>
     <!-- Favicon-->
-    <link rel="icon" type="<?= base_url('assets/') ?>image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="" href="<?= base_url('assets/') ?>images/logo/main_logo.jpeg" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Bootstrap icons-->
@@ -34,6 +34,7 @@
                             href="<?= base_url('Admin') ?>">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= base_url('Auth') ?>">Login Admin</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= base_url('User') ?>">Halaman User</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">Produk</a>
@@ -48,11 +49,11 @@
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <button class="btn btn-outline-dark" type="submit">
+                    <a class="btn btn-outline-dark"  href="<?= base_url('Keranjang') ?>">
                         <i class="bi-cart-fill me-1"></i>
-                        Cart
+                        Keranjang
                         <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                    </button>
+                    </a>
                 </form>
             </div>
         </div>
